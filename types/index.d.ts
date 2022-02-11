@@ -1,4 +1,4 @@
-import { Vue, VueConstructor } from 'vue/types/vue'
+import { ComponentCustomProperties } from 'vue'
 import { PluginFunction } from "vue"
 
 export interface ToastObject {
@@ -158,12 +158,8 @@ declare class ToastedPlugin {
   static install: PluginFunction<ToastOptions>
 }
 
-declare module 'vue/types/vue' {
-  interface VueConstructor {
-    toasted: Toasted
-  }
-
-  interface Vue {
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
     $toasted: Toasted
   }
 }
